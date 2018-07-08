@@ -19,8 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(1)
-public class LoggingAspect {
+@Order(2)
+public class SecondLoggingAspect {
 	/*//前置通知
 	@Before("execution(public * com.bingo.aop.impl.RealArithmeticSubject.*(int,int))")
 	public void before(JoinPoint joinPoint){
@@ -58,17 +58,17 @@ public class LoggingAspect {
 		Object result = null;
 		try {
 			//前置
-			System.out.println("AroundBefore:the " + methodName +" method begins with" +list);
+			System.out.println("2AroundBefore:the " + methodName +" method begins with" +list);
 			//返回通知
 			result = pdj.proceed();
-			System.out.println("AfterReturning : the result is " + result);
+			System.out.println("2AfterReturning : the result is " + result);
 		}catch (Throwable e) {
 			//异常通知
-			System.out.println("the method "+methodName+" occurs " + e);
+			System.out.println("2the method "+methodName+" occurs " + e);
             throw new RuntimeException(e);
 		}
 		//后置
-		System.out.println("After:the " + methodName +" method ends with" +list);
+		System.out.println("2After:the " + methodName +" method ends with" +list);
 		return result;
 	}
 	
